@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd" version="7">
+  <application-name>test-ziplet-with-jaxrx-EAR</application-name>
+  <display-name>test-ziplet-with-jaxrx-EAR</display-name>
+  <module id="WAR_test-ziplet-with-jaxrx.test-ziplet-with-jaxrx">
+    <web>
+      <web-uri>test-ziplet-with-jaxrx.war</web-uri>
+      <context-root>test-ziplet-with-jaxrx</context-root>
+    </web>
+  </module>
+  <library-directory>lib</library-directory>
+</application>

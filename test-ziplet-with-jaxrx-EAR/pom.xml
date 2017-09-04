@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>test-ziplet-with-jaxrx-EAR</groupId>
+	<artifactId>test-ziplet-with-jaxrx-EAR</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>ear</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<slf4j.version>1.7.12</slf4j.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>test-ziplet-with-jaxrx</groupId>
+			<artifactId>test-ziplet-with-jaxrx</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ziplet</groupId>
+			<artifactId>ziplet</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<!-- Logging section: SLF4J, log4j, etc. -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.wasdev.maven.tools.targets</groupId>
+			<artifactId>liberty-target</artifactId>
+			<version>16.0.0.3</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<generatedDescriptorLocation>${basedir}/src/main/application/META-INF</generatedDescriptorLocation>
+					<version>7</version>
+					<modules>
+						<webModule>
+							<groupId>test-ziplet-with-jaxrx</groupId>
+							<artifactId>test-ziplet-with-jaxrx</artifactId>
+							<uri>test-ziplet-with-jaxrx.war</uri>
+							<bundleFileName>test-ziplet-with-jaxrx.war</bundleFileName>
+							<bundleDir>/</bundleDir>
+							<contextRoot>test-ziplet-with-jaxrx</contextRoot>
+						</webModule>
+
+					</modules>
+					<applicationName>${project.name}</applicationName>
+					<displayName>${project.name}</displayName>
+					<finalName>${project.name}</finalName>
+					<generateModuleId>true</generateModuleId>
+					<skinnyWars>true</skinnyWars>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
